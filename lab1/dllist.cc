@@ -103,7 +103,7 @@ DLList::SortedInsert(void *item, int sortKey)
             printf("SortedInsert: Switch to another thread!\n");
             currentThread->Yield();
         }
-    } else if (sortKey < first->key) {
+    } else if (sortKey <= first->key) {
 		element->next = first;
 		if (errorType == 3) {
             printf("SortedInsert: Switch to another thread!\n");
@@ -111,7 +111,7 @@ DLList::SortedInsert(void *item, int sortKey)
         }
 		first->prev = element;
 		first = element;
-    } else if (sortKey > last->key) {
+    } else if (sortKey >= last->key) {
         element->prev = last;
         last->next = element;
         if (errorType == 4) {
